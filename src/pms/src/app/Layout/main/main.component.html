@@ -1,0 +1,54 @@
+<mat-toolbar color="primary" class="example-toolbar">
+	<button mat-icon-button (click)="isExpanded = !isExpanded"><mat-icon>menu</mat-icon></button>
+	<h1 class="example-app-name">Angular Template</h1>
+	<span fxFlex></span>
+	<!-- <div>
+		<nav>
+			<ul>
+				<li><a class="active"><i class="lni lni-home"></i></a></li>
+			</ul>
+			<div class="tubelight">
+				<div class="light-ray"></div>
+			</div>
+		</nav>
+	</div> -->
+	<div  align="end" style="width: 100%;">
+	<button mat-icon-button [matMenuTriggerFor]="dropdownMenu" >
+		<mat-icon>more_vert</mat-icon>
+	  </button></div>
+</mat-toolbar>
+<mat-menu #dropdownMenu x-position="before">
+	<a mat-menu-item  href="/">
+	  <mat-icon>exit_to_app</mat-icon>
+	  <span>Logout</span>
+	</a>
+	<a mat-menu-item  (click)="showTopMenu()">
+	  <mat-icon>info_outline</mat-icon>
+	  <span>Show Top Menu</span>
+	</a>
+  </mat-menu>
+<app-topmenu *ngIf="displayTopMenu"></app-topmenu>
+<mat-sidenav-container class="example-container" autosize>
+	<mat-sidenav #sidenav *ngIf="!displayTopMenu" class="example-sidenav" mode="side" opened="true"
+	 (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+		<mat-nav-list  *ngIf="isExpanded || isShowing">
+			<app-menu-list-item *ngFor="let item of navItems" [item]="item"></app-menu-list-item>
+		  </mat-nav-list>
+	</mat-sidenav>
+	<div class="example-sidenav-content">
+		<router-outlet></router-outlet>
+	</div>
+
+</mat-sidenav-container>
+
+<!-- <app-top-nav class="fixed-topnav" fxHide.gt-xs></app-top-nav>
+<mat-sidenav-container>
+  <mat-sidenav #appDrawer mode="over" opened="false">
+    <mat-nav-list>
+      <app-menu-list-item *ngFor="let item of navItems" [item]="item"></app-menu-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <app-top-nav fxHide.xs></app-top-nav>
+  <router-outlet></router-outlet>
+  <div fxFlex></div>
+</mat-sidenav-container> -->

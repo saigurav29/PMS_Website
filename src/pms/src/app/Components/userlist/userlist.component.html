@@ -1,0 +1,25 @@
+<h4 class="example-app-name">Employee List</h4>
+<div *ngIf="showgrid" >
+    <app-grid-data [data]="gridData" [columns]="columns" (sortChanged)="onsortChanged($event)"
+    [gridConfig]="gridConfig" [resultCount]="selectedCount" (pageChanged)="pageChanged($event,option)"
+    (pageRedirect)="pageRedirect($event)">
+  <ng-container *cellItem="let item">
+  <td *ngIf="item.column.key === 'gender'" class="mat-cell">
+    <div *ngIf="item.value['gender'] =='M'">Male</div>
+    <div *ngIf="item.value['gender'] =='F'">Female</div>
+    </td>
+    <td *ngIf="item.column.key === 'action'" class="mat-cell">
+      <div style="width: 100%;" >
+        <button mat-mini-fab color="primary"  aria-label="Example icon button with a edit icon"  >
+          <mat-icon>edit</mat-icon>
+        </button>
+       &nbsp; 
+       <button mat-mini-fab color="warn"  aria-label="Example icon button with a delete icon"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </td>
+  </ng-container>
+  </app-grid-data>
+  </div>

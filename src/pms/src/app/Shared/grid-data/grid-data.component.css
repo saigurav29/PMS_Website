@@ -1,0 +1,70 @@
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+table {
+    width: 100%;
+  }
+  
+ th{
+   background: #3f51b5 !important; color: white !important;font-size: 14px !important;
+  }
+.btnalign{
+    float: right;
+    margin-top: -50px;
+    right: 50px;
+}
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    max-width: 95%;
+  }
+  
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+  }
+  .atag{
+    padding: 10px;
+    text-decoration: underline;
+    color: blue;
+  }
+
+  @media print{
+.hidecontent{
+  display: none !important;
+}
+app-employee {
+  -webkit-print-color-adjust: exact !important;
+}
+    
+th {
+  font: bold 12px sans-serif;
+  border: 1px solid;
+  white-space: nowrap;
+}
+td {
+  font: 12px sans-serif;
+  border: 1px dotted;
+}
+td.description {
+  min-width: 200px;
+  border-style: solid;
+}
+td.number {
+  padding-left: 20px;
+  text-align: right;
+  border-style: solid;
+}
+.mat-form-field-infix{
+  display: block !important;
+  position: relative !important;
+  flex: auto !important;
+  min-width: 0 !important;
+  width: 100px !important;
+}
+.checkbox{
+  -webkit-print-color-adjust: exact !important;
+}
+  }

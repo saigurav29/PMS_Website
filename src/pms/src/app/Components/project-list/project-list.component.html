@@ -1,0 +1,7 @@
+<h4 class="example-app-name">Project List</h4>
+<div *ngIf="showgrid" >
+    <app-grid-data [data]="gridData" [columns]="columns" (sortChanged)="onsortChanged($event)"
+    [gridConfig]="gridConfig" [resultCount]="selectedCount" (pageChanged)="pageChanged($event,option)"
+    (pageRedirect)="pageRedirect($event)">
+  </app-grid-data>
+  </div>
