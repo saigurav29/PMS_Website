@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { DepartmentService } from 'src/app/Services/department.service';
 import { FieldPosition, FieldType, IGridColumn, IGridConfig } from 'src/app/Shared/grid-data/grid-data.model';
@@ -8,7 +8,7 @@ import { FieldPosition, FieldType, IGridColumn, IGridConfig } from 'src/app/Shar
   templateUrl: './department-list.component.html',
   styleUrls: ['./department-list.component.css']
 })
-export class DepartmentListComponent implements OnInit {
+export class DepartmentListComponent implements OnInit  {
 
   @ViewChild(MatSort,{static:true}) sort: MatSort|any;
   showgrid:boolean=true;
@@ -44,6 +44,9 @@ ngOnInit(): void {
   this.getEmployeeList();
 
 }
+ngAfterViewInit(){
+  this.setGridConfig();
+}
 getEmployeeList(){
   this.depService.getDepartmentList().subscribe(res=>{
     this.gridData=res;
@@ -60,9 +63,9 @@ isMultiSelectable:false,
   isServerSideSortable:true,
   pagingInfo:{
     serverSidePaging:true,
-    pagingSizes:[15,25,50,100,500],
-    defaultpageSize:25,
-    pageLength:this.selectedCount,
+    pagingSizes:[5,10,50,100],
+    defaultpageSize:5,
+    pageLength:this.selectedCount
   },
   primaryActions:[],
   secondaryActions:[],

@@ -46,7 +46,11 @@ export class GridDataComponent<T> implements OnInit, OnDestroy, AfterViewInit,On
   @ContentChild('actionAreaTemplate',{static:true}) actionTemplate: TemplateRef<any>|any;
 
   @ViewChild(MatSort,{static:true}) sort:MatSort|any;
-  @ViewChild(MatPaginator,{static:true}) paginator:MatPaginator|any;
+  //@ViewChild(MatPaginator, { static: false }) paginator: MatPaginator|any;
+  @ViewChild(MatPaginator) 
+  set paginator(value: MatPaginator) {
+    this.dataSource.paginator = value;
+  }
 @Input() resultCount : number|any;
 @Output() rowInputSelected:EventEmitter<any>= new EventEmitter();
 
@@ -96,6 +100,8 @@ export class GridDataComponent<T> implements OnInit, OnDestroy, AfterViewInit,On
                size:this.paginator.pageSize 
             });
           });
+          console.log(this.dataSource.paginator);
+          console.log(this.paginator)
         }
         this.commonRemoveScrollMethod();
   }
